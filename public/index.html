@@ -1,0 +1,126 @@
+<head>
+    <title>Chip-8 Emulator</title>
+    <link rel="stylesheet" href="/src/index.css">
+</head>
+<body>
+    <div class="console">
+        <h1>Chip-8 Javascript Emulator</h1>
+        <div id="settings">
+            <button id="reload">Reload</button>
+            
+            <select id="roms">
+                <option>BLITZ</option>
+                <option selected="selected">PICTURE</option>]
+                <option>SPACE-INVADER</option>
+                <option>MAZE</option>
+                <option>BLINKY</option>
+                <option>BRICK</option>
+                <option>TANK</option>
+                <option>15 PUZZLE</option>
+            </select>
+            
+            <text>Cycle Speed:</text>
+            <select id="hz">
+                <option>30</option>
+                <option selected="selected">60</option>
+                <option>120</option>
+            </select>
+            <text>hz.&emsp;</text>
+        
+            <text>Buzzer freq:</text>
+            <input type="range" min="200" max="1000" value="500" step="10" class="slider" id="buzzer-freq"
+                oninput="this.nextElementSibling.value = this.value"/>
+            <output>500</output>
+            <text>hz</text>
+        </div>
+        <div>
+            <text>Pixel off color: </text>
+            <select id="off-color">
+                <option value="#000" selected="selected">Black</option>
+                <option value="#F00">Red</option>
+                <option value="#0F0">Green</option>
+                <option value="#00F">Blue</option>
+                <option value="#FFF">White</option>
+            </select>
+
+            <text>Pixel on color: </text>
+            <select id="on-color">
+                <option value="#000">Black</option>
+                <option value="#F00">Red</option>
+                <option value="#0F0">Green</option>
+                <option value="#00F">Blue</option>
+                <option value="#FFF" selected="selected">White</option>
+            </select>
+            <button onclick="javascript:window.open('/src/bindings.html','Keybinds','width=350,height=510')">
+                Edit Keybinds
+            </button>
+        </div>
+        <p id="loading-text"></p>
+
+        <!-- Output the registers -->
+        <div style="float: left;">
+            <table id="register-output">
+                <thead>
+                    <tr>
+                        <th>Register</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody> </tbody>
+            </table>
+        </div>
+
+        <!-- Output the Stack-->
+        <div style="float: left;">
+            <table id="stack-output">
+                <thead>
+                    <tr>
+                        <th>Stack</th>
+                    </tr>
+                </thead>
+                <tbody> </tbody>
+            </table>
+        </div>
+
+        <div class="io"> 
+            <div>
+                <!-- The Chip8 Monitor -->
+                <canvas id="screen"></canvas>
+            </div>
+
+            <div id="keyboard" class="keyboard">
+                <div>
+                    <button id="b1" onclick="console.log('1')">1</button>
+                    <button id="b2">2</button>
+                    <button id="b3">3</button>
+                    <button id="b12">C</button>
+                </div>
+                <div>
+                    <button id="b4">4</button>
+                    <button id="b5">5</button>
+                    <button id="b6">6</button>
+                    <button id="b13">D</button>
+                </div>
+                <div>
+                    <button id="b7">7</button>
+                    <button id="b8">8</button>
+                    <button id="b9">9</button>
+                    <button id="b14">E</button>
+                </div>
+                <div>
+                    <button id="b10">A</button>
+                    <button id="b0">0</button>
+                    <button id="b11">B</button>
+                    <button id="b15">F</button>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        
+
+        <script src="/src/index.js" type="module"></script>
+    </div>
+</body>
